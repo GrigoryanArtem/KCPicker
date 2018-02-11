@@ -1,0 +1,62 @@
+﻿<!--
+Copyright 2017 Grigoryan Artem
+Licensed under the Apache License, Version 2.0
+-->
+    
+<Controls:MetroWindow x:Class="KCPicker.GUI.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:KCPicker.GUI"
+        xmlns:Controls="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
+        xmlns:xceed="http://schemas.xceed.com/wpf/xaml/toolkit"
+        mc:Ignorable="d"
+        Title="{DynamicResource rMainWindowTitle}" 
+        Height="150" Width="252" 
+        BorderThickness="0" 
+        GlowBrush="Black"
+        ResizeMode="NoResize"
+        WindowTransitionsEnabled="False"
+        WindowStartupLocation="CenterScreen"
+        KeyDown="OnKeyDown"
+        MouseDoubleClick="OnMouseDoubleClick"
+        KeyUp="OnKeyUp"
+        Deactivated="OnDeactivated" 
+        Closing="OnClosing">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+            <RowDefinition Height="auto" />
+        </Grid.RowDefinitions>
+
+        <Grid.Background>
+            <SolidColorBrush Color="{Binding ElementName=ctrlColorPicker, Path=SelectedColor}" />
+        </Grid.Background>
+
+        <TextBox
+            x:Name="ctrlColorLabel"
+            Grid.Row="0"
+            Style="{DynamicResource SelectableTextBlock}"
+            PreviewMouseRightButtonDown="OnRightButtonMouseDown" Loaded="OnLoaded" />
+
+        <xceed:ColorPicker
+            Grid.Row="1"
+            x:Name="ctrlColorPicker"
+            ShowTabHeaders="False"
+            ShowStandardColors="False"
+            ShowAvailableColors="False"
+            BorderThickness="0"
+            ColorMode="ColorCanvas"          
+            ButtonStyle="{DynamicResource FlatButton}"
+            SelectedColorChanged="OnSelectedColorChanged" />
+
+        <Canvas
+            RenderOptions.EdgeMode="Aliased"
+            RenderOptions.BitmapScalingMode="Fant"
+            Visibility="Hidden"
+            x:Name="ctrlCanvas"
+            
+            Grid.Row="0"/>
+    </Grid>
+</Controls:MetroWindow>
