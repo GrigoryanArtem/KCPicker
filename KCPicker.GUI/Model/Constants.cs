@@ -11,5 +11,6 @@ namespace KCPicker.GUI.Model
         internal static int TimerInterval => 20;
         internal static int RGBThreshold => 350;
         internal static int AlphaThreshold => 70;
+        internal static string ColorStorageFileName => "colorstorage";
     }
 }

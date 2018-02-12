@@ -2,6 +2,8 @@
 // Licensed under the Apache License, Version 2.0
 
 using KCPicker.GUI.Model;
+using KCPicker.GUI.Model.Storages;
+using KCPicker.GUI.Windows;
 using MahApps.Metro.Controls;
 using System.Timers;
 using System.Windows;
@@ -27,8 +29,9 @@ namespace KCPicker.GUI
 
         private void OnSelectedColorChanged(object sender, RoutedPropertyChangedEventArgs<Color?> e)
         {
-            ctrlColorLabel.Foreground = new SolidColorBrush(CalculateForegroundColor(e.NewValue));
-            ctrlColorLabel.Text = Model.ColorConverter.ConvertToHex(e.NewValue.Value);
+            ctrlColorLabel.Color = e.NewValue;
+            //ctrlColorLabel.Foreground = new SolidColorBrush(CalculateForegroundColor(e.NewValue));
+            //ctrlColorLabel.Text = Model.ColorConverter.ColorToHex(e.NewValue.Value);
         }
 
         private Color CalculateForegroundColor(Color? backgoundColor)
@@ -97,6 +100,20 @@ namespace KCPicker.GUI
             Properties.Settings.Default.Topmost = Topmost;
             Properties.Settings.Default.Color = ctrlColorPicker.SelectedColor ?? Colors.White;
             Properties.Settings.Default.Save();
+            ColorsStorageService.Instance.Save();
+        }
+
+        private void OnSaveButtonClick(object sender, RoutedEventArgs e)
+        {
+            //ColorsStorageService.Instance.Colors.Add(ctrlColorLabel.Text);
+        }
+
+        private void OnStorageClick(object sender, RoutedEventArgs e)
+        {
+            StorageWindow sw = new StorageWindow();
+
+            sw.Owner = this;
+            sw.ShowDialog();
         }
     }
 }

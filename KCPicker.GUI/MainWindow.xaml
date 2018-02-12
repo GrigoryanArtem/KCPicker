@@ -9,11 +9,12 @@ Licensed under the Apache License, Version 2.0
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:KCPicker.GUI"
+        xmlns:kc="clr-namespace:KCPicker.GUI.Controls"
         xmlns:Controls="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
         xmlns:xceed="http://schemas.xceed.com/wpf/xaml/toolkit"
         mc:Ignorable="d"
         Title="{DynamicResource rMainWindowTitle}" 
-        Height="150" Width="252" 
+        Height="130" Width="252" 
         BorderThickness="0" 
         GlowBrush="Black"
         ResizeMode="NoResize"
@@ -23,7 +24,20 @@ Licensed under the Apache License, Version 2.0
         MouseDoubleClick="OnMouseDoubleClick"
         KeyUp="OnKeyUp"
         Deactivated="OnDeactivated" 
-        Closing="OnClosing">
+        Closing="OnClosing"
+        Loaded="OnLoaded" >
+
+    <Controls:MetroWindow.RightWindowCommands>
+        <Controls:WindowCommands>
+            <Menu
+                Style="{DynamicResource TopMenu}">
+                <MenuItem  
+                    Style="{DynamicResource TopMenuItem}"
+                    Header="RGB"/>
+            </Menu>
+        </Controls:WindowCommands>
+    </Controls:MetroWindow.RightWindowCommands>
+    
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="*" />
@@ -34,29 +48,58 @@ Licensed under the Apache License, Version 2.0
             <SolidColorBrush Color="{Binding ElementName=ctrlColorPicker, Path=SelectedColor}" />
         </Grid.Background>
 
-        <TextBox
-            x:Name="ctrlColorLabel"
+        <WrapPanel
             Grid.Row="0"
-            Style="{DynamicResource SelectableTextBlock}"
-            PreviewMouseRightButtonDown="OnRightButtonMouseDown" Loaded="OnLoaded" />
+            Orientation="Horizontal"
+            FlowDirection="RightToLeft">
+
+            <Button
+                Style="{DynamicResource MetroCircleButtonStyle}"
+                Width="27" Height="27"
+                Background="White"
+                ToolTip="Put color to storage"
+                Click="OnSaveButtonClick">
+                
+                <Rectangle
+                    Width="10" Height="10">
+                    <Rectangle.Fill>
+                        <VisualBrush Visual="{StaticResource appbar_save}" />
+                    </Rectangle.Fill>
+                </Rectangle>
+            </Button>
+
+            <Button
+                Style="{DynamicResource MetroCircleButtonStyle}"
+                Width="27" Height="27"
+                Background="White"
+                Margin="-5"
+                Click="OnStorageClick"
+                ToolTip="Storage">
+                
+                <Rectangle
+                    Width="10" Height="10" >
+                    <Rectangle.Fill>
+                        <VisualBrush Visual="{StaticResource appbar_book_list}"/>
+                    </Rectangle.Fill>
+                </Rectangle>
+            </Button>
+        </WrapPanel>
+
+        <kc:ColorLabel 
+            Grid.Row="0"
+            x:Name="ctrlColorLabel"
+            Color="{Binding ElementName=ctrlColorPicker, Path=SelectedColor}"/>
 
         <xceed:ColorPicker
             Grid.Row="1"
             x:Name="ctrlColorPicker"
-            ShowTabHeaders="False"
-            ShowStandardColors="False"
-            ShowAvailableColors="False"
-            BorderThickness="0"
-            ColorMode="ColorCanvas"          
-            ButtonStyle="{DynamicResource FlatButton}"
+            Style="{DynamicResource FlatColorPicker}"
             SelectedColorChanged="OnSelectedColorChanged" />
 
         <Canvas
-            RenderOptions.EdgeMode="Aliased"
-            RenderOptions.BitmapScalingMode="Fant"
             Visibility="Hidden"
             x:Name="ctrlCanvas"
-            
+            Style="{DynamicResource FlatCanvas}"
             Grid.Row="0"/>
     </Grid>
 </Controls:MetroWindow>

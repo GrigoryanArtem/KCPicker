@@ -57,7 +57,7 @@ namespace KCPicker.GUI.Model
         private static MediaColor GetColor(int x, int y)
         {
             uint color = GetPixel(dc, x, y);
-            return ColorConverter.ConvertBGRToRGB(Color.FromArgb((int)color));
+            return ColorConverter.BGRToRGB(Color.FromArgb((int)color));
         }
 
         #endregion
