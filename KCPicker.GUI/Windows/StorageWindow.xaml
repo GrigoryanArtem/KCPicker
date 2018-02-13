@@ -12,13 +12,14 @@ Licensed under the Apache License, Version 2.0
         xmlns:Controls="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
         xmlns:xceed="http://schemas.xceed.com/wpf/xaml/toolkit"
         mc:Ignorable="d"
-        Title="StorageWindow"
+        Title="Storage"
         Height="400" Width="252" 
         BorderThickness="0" 
         GlowBrush="Black"
         ResizeMode="NoResize"
         WindowTransitionsEnabled="False"
-        WindowStartupLocation="CenterOwner">
+        WindowStartupLocation="CenterScreen"
+        Topmost="True">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="*" />
@@ -30,23 +31,10 @@ Licensed under the Apache License, Version 2.0
             VerticalScrollBarVisibility="Auto"
             Grid.Row="0"
             Margin=" 3 3 3 0">
-            
+
             <StackPanel
                 x:Name="ctrlList">
-                
             </StackPanel>
         </ScrollViewer>
-
-        <Button
-            Style="{StaticResource SquareButtonStyle}"
-            Margin="3"
-            Grid.Row="1"
-            Content="Select" />
-
-        <Button
-            Style="{StaticResource SquareButtonStyle}"
-            Margin="3"
-            Grid.Row="2"
-            Content="Remove" />
     </Grid>
 </Controls:MetroWindow>

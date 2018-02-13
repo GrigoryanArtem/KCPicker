@@ -29,6 +29,8 @@
     <IsWebBootstrapper>false</IsWebBootstrapper>
     <UseApplicationTrust>false</UseApplicationTrust>
     <BootstrapperEnabled>true</BootstrapperEnabled>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -99,12 +101,15 @@
     <Compile Include="Controls\ColorLabel.xaml.cs">
       <DependentUpon>ColorLabel.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Controls\ColorWithDescription.xaml.cs">
-      <DependentUpon>ColorWithDescription.xaml</DependentUpon>
+    <Compile Include="Controls\ColorLabelWithDescription.xaml.cs">
+      <DependentUpon>ColorLabelWithDescription.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\FocusableТextBox.xaml.cs">
+      <DependentUpon>FocusableТextBox.xaml</DependentUpon>
     </Compile>
     <Compile Include="Controls\Model\ColorLabelModel.cs" />
     <Compile Include="Controls\ViewModel\ColorLabelViewModel.cs" />
-    <Compile Include="Model\ColorWithDescription.cs" />
+    <Compile Include="Model\ColorDescriptionPair.cs" />
     <Compile Include="Windows\StorageWindow.xaml.cs">
       <DependentUpon>StorageWindow.xaml</DependentUpon>
     </Compile>
@@ -112,7 +117,11 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Controls\ColorWithDescription.xaml">
+    <Page Include="Controls\ColorLabelWithDescription.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\FocusableТextBox.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

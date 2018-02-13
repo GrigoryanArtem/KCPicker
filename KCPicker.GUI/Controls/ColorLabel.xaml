@@ -11,8 +11,11 @@ Licensed under the Apache License, Version 2.0
              mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="300">
     
-    <Grid Background="{Binding BackgroundColor, Mode=OneWay}">
+    <Grid 
+        x:Name="ctrlGrid"
+        Background="{Binding BackgroundColor, Mode=OneWay}">
         <TextBox
+            x:Name="ctrlTextBox"
             Style="{DynamicResource SelectableTextBlock}"
             Text="{Binding ColorName, Mode=OneWay}"
             Foreground="{Binding ForegroundColor, Mode=OneWay}"/>

@@ -2,6 +2,7 @@
 // Licensed under the Apache License, Version 2.0
 
 using KCPicker.GUI.Controls;
+using KCPicker.GUI.Model.Storages;
 using MahApps.Metro.Controls;
 using System;
 using System.Collections.Generic;
@@ -27,7 +28,16 @@ namespace KCPicker.GUI.Windows
         public StorageWindow()
         {
             InitializeComponent();
-            ctrlList.Children.Add(new ColorWithDescription(Colors.Black));
+
+            var colors = ColorsStorageService.Instance.Colors.Colors;
+
+            foreach(var color in colors)
+            {
+                var cdp = new ColorLabelWithDescription(color);
+                cdp.Margin = new Thickness(0, 0, 0, 3);
+
+                ctrlList.Children.Add(cdp);
+            }
         }
     }
 }

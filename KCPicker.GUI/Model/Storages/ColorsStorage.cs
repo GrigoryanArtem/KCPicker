@@ -4,8 +4,10 @@
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.IO;
 using System.Linq;
+using System.Windows.Media;
 
 namespace KCPicker.GUI.Model.Storages
 {
@@ -13,14 +15,14 @@ namespace KCPicker.GUI.Model.Storages
     {
         #region Members
 
-        private Dictionary<string, string> mColors = new Dictionary<string, string>();
+        private ObservableCollection<ColorDescriptionPair> mColors = new ObservableCollection<ColorDescriptionPair>();
 
         #endregion
 
         #region Properties
 
-        public IEnumerable<(string HexColor, string Description)> Colors =>
-            mColors.Select(item => (item.Key, item.Value));
+        public ObservableCollection<ColorDescriptionPair> Colors =>
+            mColors;
 
         #endregion
 
@@ -28,31 +30,57 @@ namespace KCPicker.GUI.Model.Storages
 
         public void Add(string hexColor)
         {
-            Add(hexColor, String.Empty);
+            Add(ColorConverter.HexToColor(hexColor));
         }
 
         public void Add(string hexColor, string description)
         {
-            if (mColors.ContainsKey(hexColor))
+            Add(ColorConverter.HexToColor(hexColor), description);
+        }
+
+        public void Add(Color color)
+        {
+            Add(ColorDescriptionPair.Create(color));
+        }
+
+        public void Add(Color color, string description)
+        {
+            Add(ColorDescriptionPair.Create(color, description));
+        }
+
+        public void Add(ColorDescriptionPair item)
+        {
+            if (item is null)
+                throw new ArgumentNullException(nameof(item));
+
+            if (mColors.Contains(item))
                 throw new ArgumentException("color is already exist");
 
-            mColors.Add(hexColor, description);
+            mColors.Add(item);
         }
 
-        public void Remove(string hexColor)
+        public void Remove(ColorDescriptionPair item)
         {
-            if(!mColors.ContainsKey(hexColor))
+            if (item is null)
+                throw new ArgumentNullException(nameof(item));
+
+            if (!mColors.Contains(item))
                 throw new ArgumentException("color is not exist");
 
-            mColors.Remove(hexColor);
+            mColors.Remove(item);
         }
 
-        public void Update(string hexColor, string description)
+        public void Update(ColorDescriptionPair item)
         {
-            if (!mColors.ContainsKey(hexColor))
+            if (item is null)
+                throw new ArgumentNullException(nameof(item));
+
+            var color = mColors.Where(cdp => item.Color.Equals(cdp.Color)).FirstOrDefault();
+
+            if(color is null)
                 throw new ArgumentException("color is not exist");
 
-            mColors[hexColor] = description;
+            color.Description = item.Description;
         }
 
         #endregion

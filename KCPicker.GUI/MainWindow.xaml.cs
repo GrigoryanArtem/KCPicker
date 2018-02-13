@@ -105,7 +105,7 @@ namespace KCPicker.GUI
 
         private void OnSaveButtonClick(object sender, RoutedEventArgs e)
         {
-            //ColorsStorageService.Instance.Colors.Add(ctrlColorLabel.Text);
+            ColorsStorageService.Instance.Colors.Add(ctrlColorLabel.Color.Value);
         }
 
         private void OnStorageClick(object sender, RoutedEventArgs e)
@@ -114,6 +114,17 @@ namespace KCPicker.GUI
 
             sw.Owner = this;
             sw.ShowDialog();
+        }
+
+        private void OnColseClick(object sender, RoutedEventArgs e)
+        {
+            Close();
+        }
+
+        private void OnMouseDown(object sender, MouseButtonEventArgs e)
+        {
+            if (e.ChangedButton == MouseButton.Left)
+                DragMove();
         }
     }
 }

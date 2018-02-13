@@ -1,0 +1,103 @@
+﻿<!--
+Copyright 2017 Grigoryan Artem
+Licensed under the Apache License, Version 2.0
+-->
+<UserControl x:Class="KCPicker.GUI.Controls.FocusableТextBox"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:KCPicker.GUI.Controls"
+             mc:Ignorable="d" 
+             d:DesignHeight="50" d:DesignWidth="300">
+
+    <UserControl.Resources>
+        <ResourceDictionary>
+            <Style
+                x:Key="FocusableTextBlock"
+                TargetType="TextBlock">
+                <Setter
+                    Property="TextTrimming"
+                    Value="CharacterEllipsis" />
+            </Style>
+            
+            <Style 
+                x:Key="FocusableTextBox"
+                TargetType="TextBox">
+                
+                <Style.Setters>
+                    <Setter
+                        Property="Background"
+                        Value="White" />
+
+                    <Setter
+                        Property="FontSize" 
+                        Value="13"/>
+
+                    <Setter 
+                        Property="Padding"
+                        Value="4 2" />
+
+                    <Setter
+                        Property="AcceptsReturn"
+                        Value="True" />
+
+                    <Setter
+                        Property="BorderBrush"
+                        Value="Black" />
+
+                    <Setter 
+                        Property="BorderThickness"
+                        Value="0" />
+
+                    <Setter
+                        Property="VerticalScrollBarVisibility"
+                        Value="Auto" />
+
+                    <Setter
+                        Property="MaxLines"
+                        Value="15" />
+
+                    <Setter
+                        Property="TextWrapping"
+                        Value="Wrap" />
+
+                    <Setter 
+                        Property="TextAlignment"
+                        Value="Justify" />
+                </Style.Setters>
+                
+                <Style.Triggers>
+                    <DataTrigger 
+                        Binding="{Binding IsKeyboardFocused, RelativeSource={RelativeSource Self}}" 
+                        Value="false">
+
+                        <Setter Property="Template">
+                            
+                            <Setter.Value>
+                                <ControlTemplate TargetType="TextBox">
+                                    
+                                    <TextBlock 
+                                        Style="{StaticResource FocusableTextBlock}"
+                                        Text="{TemplateBinding Text}"
+                                        Background="{TemplateBinding Background}"
+                                        FontSize="{TemplateBinding FontSize}"
+                                        TextWrapping="{TemplateBinding TextWrapping}"
+                                        Padding="{TemplateBinding Padding}"
+                                        TextAlignment="{TemplateBinding TextAlignment}"
+                                        MaxHeight="45"/>
+                                </ControlTemplate>
+                            </Setter.Value>
+                        </Setter>
+                    </DataTrigger>
+                </Style.Triggers>
+            </Style>
+        </ResourceDictionary>
+    </UserControl.Resources>
+    
+    <TextBox
+        Style="{StaticResource FocusableTextBox}"
+        x:Name="ctrlTextBox">
+        
+    </TextBox>
+</UserControl>
