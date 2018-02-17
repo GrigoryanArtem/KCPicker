@@ -18,9 +18,13 @@ Licensed under the Apache License, Version 2.0
                 <ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/Styles/Accents/Blue.xaml" />
                 <ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/Styles/Accents/BaseLight.xaml" />
 
+                
                 <ResourceDictionary Source="Resources/Icons.xaml" />
                 <ResourceDictionary Source="Resources/lang.xaml" />
+                
+                <!-- STYLES -->
                 <ResourceDictionary Source="Styles/Styles.xaml" />
+                <ResourceDictionary Source="Styles/CircleButtonStyles.xaml" />
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Application.Resources>

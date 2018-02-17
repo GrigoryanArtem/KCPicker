@@ -1,9 +1,7 @@
 ﻿// Copyright 2017 Grigoryan Artem
 // Licensed under the Apache License, Version 2.0
 
-using KCPicker.GUI.Controls;
-using KCPicker.GUI.Model.Storages;
-using MahApps.Metro.Controls;
+using KCPicker.GUI.Controls.ViewModel;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,18 +14,20 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace KCPicker.GUI.Windows
+namespace KCPicker.GUI.Controls
 {
     /// <summary>
-    /// Логика взаимодействия для StorageWindow.xaml
+    /// Логика взаимодействия для ColorsStorageViewer.xaml
     /// </summary>
-    public partial class StorageWindow : MetroWindow
+    public partial class ColorsStorageViewer : UserControl
     {
-        public StorageWindow()
+        public ColorsStorageViewer()
         {
             InitializeComponent();
+            DataContext = new ColorsStorageViewerViewModel();
         }
     }
 }

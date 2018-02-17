@@ -9,6 +9,7 @@ Licensed under the Apache License, Version 2.0
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:KCPicker.GUI.Windows"
+        xmlns:kc="clr-namespace:KCPicker.GUI.Controls"
         xmlns:Controls="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
         xmlns:xceed="http://schemas.xceed.com/wpf/xaml/toolkit"
         mc:Ignorable="d"
@@ -27,14 +28,6 @@ Licensed under the Apache License, Version 2.0
             <RowDefinition Height="auto" />
         </Grid.RowDefinitions>
 
-        <ScrollViewer 
-            VerticalScrollBarVisibility="Auto"
-            Grid.Row="0"
-            Margin=" 3 3 3 0">
-
-            <StackPanel
-                x:Name="ctrlList">
-            </StackPanel>
-        </ScrollViewer>
+        <kc:ColorsStorageViewer Grid.Row="0"/>
     </Grid>
 </Controls:MetroWindow>

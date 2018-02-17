@@ -83,12 +83,6 @@ namespace KCPicker.GUI
             Topmost = !Topmost;
         }
 
-        private void OnDeactivated(object sender, System.EventArgs e)
-        {
-            if (Topmost)
-                Activate();
-        }
-
         private void OnLoaded(object sender, RoutedEventArgs e)
         {
             Topmost = Properties.Settings.Default.Topmost;
@@ -113,7 +107,7 @@ namespace KCPicker.GUI
             StorageWindow sw = new StorageWindow();
 
             sw.Owner = this;
-            sw.ShowDialog();
+            sw.Show();
         }
 
         private void OnColseClick(object sender, RoutedEventArgs e)

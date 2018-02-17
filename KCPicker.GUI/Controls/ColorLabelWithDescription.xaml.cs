@@ -4,6 +4,7 @@
 using KCPicker.GUI.Model;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Input;
 using System.Windows.Media;
 
 namespace KCPicker.GUI.Controls
@@ -25,6 +26,8 @@ namespace KCPicker.GUI.Controls
 
         #region DependencyProperties
 
+        public static readonly DependencyProperty RemoveCommandProperty = DependencyProperty.Register(nameof(RemoveCommand), typeof(ICommand), typeof(ColorLabelWithDescription));
+        public static readonly DependencyProperty SelectCommandProperty = DependencyProperty.Register(nameof(SelectCommand), typeof(ICommand), typeof(ColorLabelWithDescription));
         public static readonly DependencyProperty TitleProperty = DependencyProperty.Register(nameof(ColorWithDescription), typeof(ColorDescriptionPair), typeof(ColorLabelWithDescription));
 
         #endregion
@@ -46,6 +49,30 @@ namespace KCPicker.GUI.Controls
             {
                 ctrlColorLabel.Color = value.Color;
                 ctrlDescriptionTextBox.Text = value.Description;
+            }
+        }
+
+        public ICommand RemoveCommand
+        {
+            get
+            {
+                return ctrlRemoveBTN.Command;
+            }
+            set
+            {
+                ctrlRemoveBTN.Command = value;
+            }
+        }
+
+        public ICommand SelectCommand
+        {
+            get
+            {
+                return ctrlSelectBTN.Command;
+            }
+            set
+            {
+                ctrlSelectBTN.Command = value;
             }
         }
 

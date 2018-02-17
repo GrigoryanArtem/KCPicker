@@ -3,7 +3,6 @@
 
 using KCPicker.GUI.Controls.Model;
 using Prism.Mvvm;
-using System.Windows;
 using System.Windows.Media;
 
 namespace KCPicker.GUI.Controls.ViewModel

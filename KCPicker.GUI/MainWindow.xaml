@@ -29,7 +29,20 @@ Licensed under the Apache License, Version 2.0
         Closing="OnClosing"
         Loaded="OnLoaded" 
         MouseDown="OnMouseDown">
+    <Controls:MetroWindow.Resources>
+        <ResourceDictionary>
+            <Style
+                x:Key="MiddleCircleButton"
+                TargetType="Button"
+                BasedOn="{StaticResource CircleButton}">
 
+                <Setter
+                    Property="Margin"
+                    Value="-5 0 0 0" />
+            </Style>
+        </ResourceDictionary>
+    </Controls:MetroWindow.Resources>
+    
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="*" />
@@ -37,12 +50,13 @@ Licensed under the Apache License, Version 2.0
         </Grid.RowDefinitions>
 
         <Grid.Background>
-            <SolidColorBrush Color="{Binding ElementName=ctrlColorPicker, Path=SelectedColor}" />
+            <SolidColorBrush Color="{Binding ElementName=ctrlColorLabel, Path=Color}" />
         </Grid.Background>
         
         <kc:ColorLabel 
             Grid.Row="0"
             x:Name="ctrlColorLabel"
+            Padding="0 12 0 0"
             Color="{Binding ElementName=ctrlColorPicker, Path=SelectedColor}" />
 
         <DockPanel
@@ -54,15 +68,12 @@ Licensed under the Apache License, Version 2.0
                 FlowDirection="RightToLeft">
 
                 <Button
-                    Style="{DynamicResource MetroCircleButtonStyle}"
-                    Width="27" Height="27"
-                    Background="White"
-                    
+                    Style="{DynamicResource CircleButton}"
                     Click="OnColseClick"
                     ToolTip="Close">
 
                     <Rectangle
-                        Width="10" Height="10" >
+                        Style="{StaticResource CircleButtonRectangle}" >
                         <Rectangle.Fill>
                             <VisualBrush Visual="{StaticResource appbar_close}"/>
                         </Rectangle.Fill>
@@ -70,15 +81,12 @@ Licensed under the Apache License, Version 2.0
                 </Button>
                 
                 <Button
-                    Style="{DynamicResource MetroCircleButtonStyle}"
-                    Width="27" Height="27"
-                    Background="White"
-                    Margin="-5 0 0 0"
+                    Style="{DynamicResource MiddleCircleButton}"
                     ToolTip="Put color to storage"
                     Click="OnSaveButtonClick">
 
                     <Rectangle
-                        Width="10" Height="10">
+                        Style="{StaticResource CircleButtonRectangle}" >
                         <Rectangle.Fill>
                             <VisualBrush Visual="{StaticResource appbar_save}" />
                         </Rectangle.Fill>
@@ -86,15 +94,12 @@ Licensed under the Apache License, Version 2.0
                 </Button>
 
                 <Button
-                    Style="{DynamicResource MetroCircleButtonStyle}"
-                    Width="27" Height="27"
-                    Background="White"
-                    Margin="-5 0 0 0"
+                    Style="{DynamicResource MiddleCircleButton}"
                     Click="OnStorageClick"
                     ToolTip="Storage">
 
                     <Rectangle
-                        Width="10" Height="10" >
+                        Style="{StaticResource CircleButtonRectangle}" >
                         <Rectangle.Fill>
                             <VisualBrush Visual="{StaticResource appbar_book_list}"/>
                         </Rectangle.Fill>
@@ -107,7 +112,7 @@ Licensed under the Apache License, Version 2.0
             Grid.Row="1"
             x:Name="ctrlColorPicker"
             Style="{DynamicResource FlatColorPicker}"
-            SelectedColorChanged="OnSelectedColorChanged" />
+            SelectedColorChanged="OnSelectedColorChanged" Background="#FFF6F6F6" />
 
         <Canvas
             Visibility="Hidden"

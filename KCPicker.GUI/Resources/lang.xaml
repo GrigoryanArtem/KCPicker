@@ -8,4 +8,7 @@ Licensed under the Apache License, Version 2.0
                     xmlns:local="clr-namespace:KCPicker.GUI.Resources"
                     xmlns:v="clr-namespace:System;assembly=mscorlib">
     <v:String x:Key="rMainWindowTitle">KCPicker</v:String>
+    <v:String x:Key="rClose">Close</v:String>
+    <v:String x:Key="rRemove">Remove</v:String>
+    <v:String x:Key="rSelect">Select</v:String>
 </ResourceDictionary>

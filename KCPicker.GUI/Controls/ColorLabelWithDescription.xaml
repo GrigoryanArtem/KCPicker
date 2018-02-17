@@ -8,8 +8,26 @@ Licensed under the Apache License, Version 2.0
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:KCPicker.GUI.Controls"
+             xmlns:model="clr-namespace:KCPicker.GUI.Controls.Model"
              mc:Ignorable="d" 
              d:DesignHeight="100" d:DesignWidth="250">
+
+    <UserControl.Resources>
+        <ResourceDictionary>
+            <model:BooleanToVisibilityConverter x:Key="BoolConverter"/>
+
+            <Style
+                TargetType="Button"
+                x:Key="MiddleCircleButton"
+                BasedOn="{StaticResource CircleButton}">
+
+                <Setter 
+                    Property="Margin"
+                    Value="0 -5 0 0" />
+            </Style>
+        </ResourceDictionary>
+    </UserControl.Resources>
+    
     <Border
         x:Name="ctrlBorder"
         Height="auto"
@@ -31,8 +49,44 @@ Licensed under the Apache License, Version 2.0
                 Grid.Row="1"
                 BorderThickness="0 1 0 0"
                 BorderBrush="Black">
-                <local:FocusableТextBox x:Name="ctrlDescriptionTextBox"/>
+                <local:FocusableТextBox 
+                    x:Name="ctrlDescriptionTextBox" />
             </Border>
+
+            <DockPanel
+                LastChildFill="False">
+                <StackPanel
+                    DockPanel.Dock="Right">
+
+                    <Button
+                        x:Name="ctrlRemoveBTN"
+                        Visibility="{Binding ElementName=ctrlBorder, Path=IsMouseOver, Converter={StaticResource BoolConverter}}"
+                        Style="{DynamicResource CircleButton}"
+                        ToolTip="{DynamicResource rRemove}">
+                        
+                        <Rectangle
+                            Style="{StaticResource CircleButtonRectangle}" >
+                            <Rectangle.Fill>
+                                <VisualBrush Visual="{StaticResource appbar_close}"/>
+                            </Rectangle.Fill>
+                        </Rectangle>
+                    </Button>
+
+                    <Button
+                        x:Name="ctrlSelectBTN"
+                        Visibility="{Binding ElementName=ctrlBorder, Path=IsMouseOver, Converter={StaticResource BoolConverter}}"
+                        Style="{DynamicResource MiddleCircleButton}"
+                        ToolTip="{DynamicResource rSelect}">
+
+                        <Rectangle
+                            Style="{StaticResource CircleButtonRectangle}" >
+                            <Rectangle.Fill>
+                                <VisualBrush Visual="{StaticResource appbar_door_enter}"/>
+                            </Rectangle.Fill>
+                        </Rectangle>
+                    </Button>
+                </StackPanel>
+            </DockPanel>
         </Grid>
     </Border>
 </UserControl>

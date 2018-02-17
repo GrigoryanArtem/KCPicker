@@ -104,11 +104,17 @@
     <Compile Include="Controls\ColorLabelWithDescription.xaml.cs">
       <DependentUpon>ColorLabelWithDescription.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Controls\ColorsStorageViewer.xaml.cs">
+      <DependentUpon>ColorsStorageViewer.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Controls\FocusableТextBox.xaml.cs">
       <DependentUpon>FocusableТextBox.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Controls\Model\BooleanToVisibilityConverter.cs" />
     <Compile Include="Controls\Model\ColorLabelModel.cs" />
+    <Compile Include="Controls\Model\ColorsStorageViewerModel.cs" />
     <Compile Include="Controls\ViewModel\ColorLabelViewModel.cs" />
+    <Compile Include="Controls\ViewModel\ColorsStorageViewerViewModel.cs" />
     <Compile Include="Model\ColorDescriptionPair.cs" />
     <Compile Include="Windows\StorageWindow.xaml.cs">
       <DependentUpon>StorageWindow.xaml</DependentUpon>
@@ -118,6 +124,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Controls\ColorLabelWithDescription.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\ColorsStorageViewer.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -146,6 +156,10 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="Resources\lang.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Styles\CircleButtonStyles.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
