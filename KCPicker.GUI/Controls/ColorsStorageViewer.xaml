@@ -15,11 +15,50 @@ Licensed under the Apache License, Version 2.0
     <ScrollViewer 
             VerticalScrollBarVisibility="Auto">
 
-        <StackPanel>
+        <!--<ListBox
+            Focusable="False" 
+            ItemsSource="{Binding Colors}">
+            
+            <ItemsControl.ItemTemplate>
+                <DataTemplate>
+                    <local:ColorLabelWithDescription 
+                        Margin="3"
+                        Color="{Binding Path=Color}"/>
+                </DataTemplate>
+            </ItemsControl.ItemTemplate>
+        </ListBox>-->
+
+        <local:ColorLabelWithDescription 
+                        Margin="3"
+                        Color="Aquamarine"/>
+
+        <!--<ItemsControl ItemsSource="{Binding Colors}">
+            <ItemsControl.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <StackPanel/>
+                </ItemsPanelTemplate>
+            </ItemsControl.ItemsPanel>
+            <ItemsControl.ItemTemplate>
+                <DataTemplate>
+                    <local:ColorLabelWithDescription 
+                        Margin="3"
+                        DataContext="{Binding Path=Color}"/>
+                </DataTemplate>
+            </ItemsControl.ItemTemplate>
+        </ItemsControl>-->
+
+        <!--<StackPanel>
             <ItemsControl 
-                ItemsSource="{Binding Colors}">
-                
+                ItemsSource="{Binding Colors, Mode=OneWay}">
+
+                <ItemsControl.Template>
+                    <ControlTemplate>
+                        <local:ColorLabelWithDescription 
+                            Margin="1 3"
+                            Color="{Binding Color}"/>
+                    </ControlTemplate>
+                </ItemsControl.Template>
             </ItemsControl>
-        </StackPanel>
+        </StackPanel>-->
     </ScrollViewer>
 </UserControl>

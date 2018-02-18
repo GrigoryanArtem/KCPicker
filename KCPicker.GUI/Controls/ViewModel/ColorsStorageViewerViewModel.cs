@@ -3,6 +3,7 @@
 
 using KCPicker.GUI.Controls.Model;
 using KCPicker.GUI.Model;
+using KCPicker.GUI.Model.Storages;
 using Prism.Commands;
 using Prism.Mvvm;
 using System.Collections.ObjectModel;
@@ -22,7 +23,7 @@ namespace KCPicker.GUI.Controls.ViewModel
             });
         }
 
-        public ObservableCollection<ColorLabelWithDescription> Colors => mModel.Colors;
+        public ObservableCollection<ColorDescriptionPair> Colors => ColorsStorageService.Instance.Colors.Colors; //mModel.Colors; //;
 
         public DelegateCommand<ColorDescriptionPair> RemoveCommand { get; }
     }

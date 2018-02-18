@@ -21,14 +21,14 @@ namespace KCPicker.GUI.Controls
 
         public ColorLabelWithDescription(ColorDescriptionPair colorWithDescription) : this()
         {
-            ColorWithDescription = colorWithDescription;
+            //ColorWithDescription = colorWithDescription;
         }
 
         #region DependencyProperties
 
         public static readonly DependencyProperty RemoveCommandProperty = DependencyProperty.Register(nameof(RemoveCommand), typeof(ICommand), typeof(ColorLabelWithDescription));
         public static readonly DependencyProperty SelectCommandProperty = DependencyProperty.Register(nameof(SelectCommand), typeof(ICommand), typeof(ColorLabelWithDescription));
-        public static readonly DependencyProperty TitleProperty = DependencyProperty.Register(nameof(ColorWithDescription), typeof(ColorDescriptionPair), typeof(ColorLabelWithDescription));
+        public static readonly DependencyProperty ColorProperty = DependencyProperty.Register(nameof(Color), typeof(Color?), typeof(ColorLabelWithDescription));
 
         #endregion
 
@@ -39,18 +39,30 @@ namespace KCPicker.GUI.Controls
 
         #region Properties
 
-        public ColorDescriptionPair ColorWithDescription
+        public Color? Color
         {
             get
             {
-                return new ColorDescriptionPair(ctrlColorLabel.Color.Value, ctrlDescriptionTextBox.Text);
+                return ctrlColorLabel.Color.Value;
             }
             set
             {
-                ctrlColorLabel.Color = value.Color;
-                ctrlDescriptionTextBox.Text = value.Description;
+                ctrlColorLabel.Color = value;                
             }
         }
+
+        //public ColorDescriptionPair ColorWithDescription
+        //{
+        //    get
+        //    {
+        //        return new ColorDescriptionPair(ctrlColorLabel.Color.Value, ctrlDescriptionTextBox.Text);
+        //    }
+        //    set
+        //    {
+        //        ctrlColorLabel.Color = value.Color;
+        //        ctrlDescriptionTextBox.Text = value.Description;
+        //    }
+        //}
 
         public ICommand RemoveCommand
         {
