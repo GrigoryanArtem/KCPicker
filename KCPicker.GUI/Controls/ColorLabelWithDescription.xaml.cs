@@ -39,17 +39,17 @@ namespace KCPicker.GUI.Controls
 
         #region Properties
 
-        public Color? Color
-        {
-            get
-            {
-                return ctrlColorLabel.Color.Value;
-            }
-            set
-            {
-                ctrlColorLabel.Color = value;                
-            }
-        }
+        //public Color? Color
+        //{
+        //    get
+        //    {
+        //        return ctrlColorLabel.Color.Value;
+        //    }
+        //    set
+        //    {
+        //        ctrlColorLabel.Color = value;                
+        //    }
+        //}
 
         //public ColorDescriptionPair ColorWithDescription
         //{

@@ -30,7 +30,7 @@ namespace KCPicker.GUI.Model
             for (int x = 0; x < screenCapture.Width; x++)
                 for (int y = 0; y < screenCapture.Height; y++)
                     canvas.Children.Add(CreateSquare((x * step + xPadding, y * step + yPadding), step,
-                        ColorConverter.RGBToRGB(screenCapture.GetPixel(x, y))));
+                        GUI.Model.Converters.ColorConverter.RGBToRGB(screenCapture.GetPixel(x, y))));
 
             for (int x = 0; x <= screenCapture.Width; x++)
                 canvas.Children.Add(CreateVerticalLine((x * step + xPadding, yPadding), realHeight,

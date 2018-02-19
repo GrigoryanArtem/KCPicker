@@ -39,7 +39,7 @@ namespace KCPicker.GUI.Controls.Model
         {
             get
             {
-                return GUI.Model.ColorConverter.ColorToHex(mColor);
+                return GUI.Model.Converters.ColorConverter.ARGBToHexString(mColor);
             }
         }
 

@@ -28,9 +28,9 @@ Licensed under the Apache License, Version 2.0
             </ItemsControl.ItemTemplate>
         </ListBox>-->
 
-        <local:ColorLabelWithDescription 
-                        Margin="3"
-                        Color="Aquamarine"/>
+        <local:ColorLabel 
+            Color="Black"
+            Margin="3"/>
 
         <!--<ItemsControl ItemsSource="{Binding Colors}">
             <ItemsControl.ItemsPanel>

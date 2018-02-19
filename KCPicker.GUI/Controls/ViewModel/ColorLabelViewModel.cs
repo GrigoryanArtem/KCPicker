@@ -3,40 +3,42 @@
 
 using KCPicker.GUI.Controls.Model;
 using Prism.Mvvm;
+using System.Windows;
 using System.Windows.Media;
 
 namespace KCPicker.GUI.Controls.ViewModel
 {
-    public class ColorLabelViewModel : BindableBase
+    public class ColorLabelViewModel : DependencyObject//: BindableBase
     {
-        #region Members
+        //#region Members
 
-        private ColorLabelModel mModel = new ColorLabelModel();
+        //private Color _color;
+        //private ColorLabelModel mModel = new ColorLabelModel();
 
-        #endregion
+        //#endregion
 
-        public ColorLabelViewModel()
-        {
-            mModel.PropertyChanged += (sender, e) => RaisePropertyChanged(e.PropertyName);
-        }
+        //public ColorLabelViewModel()
+        //{
+        //    mModel.PropertyChanged += (sender, e) => RaisePropertyChanged(e.PropertyName);
+        //}
 
-        #region Properties
+        //#region Properties
 
-        public Color Color
-        {
-            get
-            {
-                return mModel.Color;
-            }
-            set
-            {
-                mModel.Color = value;
-            }
-        }
-        public Brush ForegroundColor => mModel.ForegroundColor;
-        public Brush BackgroundColor => mModel.BackgroundColor;
-        public string ColorName => mModel.ColorName;
+        //public Color Color
+        //{
+        //    get
+        //    {
+        //        return _color;
+        //    }
+        //    set
+        //    {
+        //        SetProperty(ref _color, value);
+        //    }
+        //}
+        //public Brush ForegroundColor => mModel.ForegroundColor;
+        //public Brush BackgroundColor => mModel.BackgroundColor;
+        //public string ColorName => mModel.ColorName;
 
-        #endregion
+        //#endregion
     }
 }

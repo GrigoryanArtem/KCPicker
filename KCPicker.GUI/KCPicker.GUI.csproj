@@ -113,9 +113,11 @@
     <Compile Include="Controls\Model\BooleanToVisibilityConverter.cs" />
     <Compile Include="Controls\Model\ColorLabelModel.cs" />
     <Compile Include="Controls\Model\ColorsStorageViewerModel.cs" />
+    <Compile Include="Controls\Model\ColorToTextConverter.cs" />
     <Compile Include="Controls\ViewModel\ColorLabelViewModel.cs" />
     <Compile Include="Controls\ViewModel\ColorsStorageViewerViewModel.cs" />
     <Compile Include="Model\ColorDescriptionPair.cs" />
+    <Compile Include="Model\Converters\ColorConverterMode.cs" />
     <Compile Include="Windows\StorageWindow.xaml.cs">
       <DependentUpon>StorageWindow.xaml</DependentUpon>
     </Compile>
@@ -173,7 +175,7 @@
     </Page>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Model\ColorConverter.cs" />
+    <Compile Include="Model\Converters\ColorConverter.cs" />
     <Compile Include="Model\Storages\ColorsStorage.cs" />
     <Compile Include="Model\Storages\ColorsStorageService.cs" />
     <Compile Include="Model\Constants.cs" />

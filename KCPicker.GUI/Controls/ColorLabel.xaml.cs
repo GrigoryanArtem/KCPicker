@@ -2,6 +2,7 @@
 // Licensed under the Apache License, Version 2.0
 
 using KCPicker.GUI.Controls.ViewModel;
+using System.ComponentModel;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
@@ -18,13 +19,13 @@ namespace KCPicker.GUI.Controls
         public ColorLabel()
         {
             InitializeComponent();
-
-            DataContext = mColorLabelVM;
+            //DataContext = mColorLabelVM;
         }
 
         #region DependencyProperties
 
-        public static readonly DependencyProperty ColorProperty = DependencyProperty.Register(nameof(Color), typeof(Color?), typeof(ColorLabel));
+        public static readonly DependencyProperty ColorProperty = DependencyProperty.Register(nameof(Color), typeof(Color?), typeof(ColorLabel),
+            new FrameworkPropertyMetadata(FrameworkPropertyMetadataOptions.BindsTwoWayByDefault));
 
         #endregion
 
@@ -34,12 +35,17 @@ namespace KCPicker.GUI.Controls
         {
             get
             {
-                return mColorLabelVM.Color;
+                return (Color?)GetValue(ColorProperty);
             }
             set
             {
-                mColorLabelVM.Color = value ?? Colors.Transparent;
+                SetValue(ColorProperty, value);
             }
+        }
+
+        private static void OnChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        {
+             
         }
 
         #endregion

@@ -8,6 +8,7 @@ using System.Collections.ObjectModel;
 using System.IO;
 using System.Linq;
 using System.Windows.Media;
+using KCPicker.GUI.Model.Converters;
 
 namespace KCPicker.GUI.Model.Storages
 {
@@ -30,12 +31,12 @@ namespace KCPicker.GUI.Model.Storages
 
         public void Add(string hexColor)
         {
-            Add(ColorConverter.HexToColor(hexColor));
+            Add(Converters.ColorConverter.HexToColor(hexColor));
         }
 
         public void Add(string hexColor, string description)
         {
-            Add(ColorConverter.HexToColor(hexColor), description);
+            Add(Converters.ColorConverter.HexToColor(hexColor), description);
         }
 
         public void Add(Color color)

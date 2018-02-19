@@ -7,17 +7,25 @@ Licensed under the Apache License, Version 2.0
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:model="clr-namespace:KCPicker.GUI.Controls.Model"
              xmlns:local="clr-namespace:KCPicker.GUI.Controls"
              mc:Ignorable="d" 
-             d:DesignHeight="300" d:DesignWidth="300">
+             d:DesignHeight="300" d:DesignWidth="300"
+             x:Name="self">
+
+    <UserControl.Resources>
+        <ResourceDictionary>
+            <model:ColorToTextConverter x:Key="ColorToText" />
+        </ResourceDictionary>
+    </UserControl.Resources>
     
     <Grid 
         x:Name="ctrlGrid"
-        Background="{Binding BackgroundColor, Mode=OneWay}">
+        Background="{Binding ElementName=self, Path=Color}">
         <TextBox
             x:Name="ctrlTextBox"
             Style="{DynamicResource SelectableTextBlock}"
-            Text="{Binding ColorName, Mode=OneWay}"
+            Text="{Binding ElementName=ctrlGrid, Path=Background, Converter={StaticResource ColorToText}}"
             Foreground="{Binding ForegroundColor, Mode=OneWay}"/>
     </Grid>
 </UserControl>

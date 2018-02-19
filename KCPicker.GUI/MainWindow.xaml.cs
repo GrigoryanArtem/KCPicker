@@ -29,7 +29,7 @@ namespace KCPicker.GUI
 
         private void OnSelectedColorChanged(object sender, RoutedPropertyChangedEventArgs<Color?> e)
         {
-            ctrlColorLabel.Color = e.NewValue;
+            //ctrlColorLabel.Color = e.NewValue;
             //ctrlColorLabel.Foreground = new SolidColorBrush(CalculateForegroundColor(e.NewValue));
             //ctrlColorLabel.Text = Model.ColorConverter.ColorToHex(e.NewValue.Value);
         }
@@ -99,7 +99,7 @@ namespace KCPicker.GUI
 
         private void OnSaveButtonClick(object sender, RoutedEventArgs e)
         {
-            ColorsStorageService.Instance.Colors.Add(ctrlColorLabel.Color.Value);
+            //ColorsStorageService.Instance.Colors.Add(ctrlColorLabel.Color.Value);
         }
 
         private void OnStorageClick(object sender, RoutedEventArgs e)
