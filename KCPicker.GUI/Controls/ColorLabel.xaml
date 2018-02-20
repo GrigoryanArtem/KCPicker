@@ -11,21 +11,22 @@ Licensed under the Apache License, Version 2.0
              xmlns:local="clr-namespace:KCPicker.GUI.Controls"
              mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="300"
-             x:Name="self">
+             x:Name="root">
 
     <UserControl.Resources>
         <ResourceDictionary>
             <model:ColorToTextConverter x:Key="ColorToText" />
+            <model:BackgroundColorToForegroundColorConverter x:Key="BackgroundToForeground" />
         </ResourceDictionary>
     </UserControl.Resources>
     
     <Grid 
         x:Name="ctrlGrid"
-        Background="{Binding ElementName=self, Path=Color}">
+        Background="{Binding Color}">
         <TextBox
             x:Name="ctrlTextBox"
             Style="{DynamicResource SelectableTextBlock}"
-            Text="{Binding ElementName=ctrlGrid, Path=Background, Converter={StaticResource ColorToText}}"
-            Foreground="{Binding ForegroundColor, Mode=OneWay}"/>
+            Text="{Binding Color, Converter={StaticResource ColorToText}}"
+            Foreground="{Binding Color, Converter={StaticResource BackgroundToForeground}}"/>
     </Grid>
 </UserControl>

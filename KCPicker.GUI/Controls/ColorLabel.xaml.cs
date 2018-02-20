@@ -2,6 +2,7 @@
 // Licensed under the Apache License, Version 2.0
 
 using KCPicker.GUI.Controls.ViewModel;
+using KCPicker.GUI.Model.Converters;
 using System.ComponentModel;
 using System.Windows;
 using System.Windows.Controls;
@@ -19,18 +20,21 @@ namespace KCPicker.GUI.Controls
         public ColorLabel()
         {
             InitializeComponent();
-            //DataContext = mColorLabelVM;
+            DataContext = this;
         }
 
         #region DependencyProperties
 
         public static readonly DependencyProperty ColorProperty = DependencyProperty.Register(nameof(Color), typeof(Color?), typeof(ColorLabel),
-            new FrameworkPropertyMetadata(FrameworkPropertyMetadataOptions.BindsTwoWayByDefault));
+            new FrameworkPropertyMetadata(null, FrameworkPropertyMetadataOptions.BindsTwoWayByDefault));
+        public static readonly DependencyProperty TextModeProperty = DependencyProperty.Register(nameof(TextMode), typeof(ColorConverterMode), typeof(ColorLabel),
+            new FrameworkPropertyMetadata(ColorConverterMode.ARGB_HEX, FrameworkPropertyMetadataOptions.BindsTwoWayByDefault));
 
         #endregion
 
         #region Properties
 
+        [Bindable(true)]
         public Color? Color
         {
             get
@@ -43,9 +47,17 @@ namespace KCPicker.GUI.Controls
             }
         }
 
-        private static void OnChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        [Bindable(true)]
+        public ColorConverterMode TextMode
         {
-             
+            get
+            {
+                return (ColorConverterMode)GetValue(TextModeProperty);
+            }
+            set
+            {
+                SetValue(TextModeProperty, value);
+            }
         }
 
         #endregion

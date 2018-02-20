@@ -110,6 +110,7 @@
     <Compile Include="Controls\FocusableТextBox.xaml.cs">
       <DependentUpon>FocusableТextBox.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Controls\Model\BackgroundColorToForegroundColorConverter.cs" />
     <Compile Include="Controls\Model\BooleanToVisibilityConverter.cs" />
     <Compile Include="Controls\Model\ColorLabelModel.cs" />
     <Compile Include="Controls\Model\ColorsStorageViewerModel.cs" />
